@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Reto 2 Blockchain</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	    <!-- Clase minando transacción -->
+	    <link rel="stylesheet" type="text/css" href="css/cargandoBlockchain.css">  
+
+	</head>
+	<body>
+<div id="MinandoT">
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+
+				<!--Agregar Hash de diploma-->
+					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+						<div class="content">
+							    <button id="BotonSalir">Salir</button>
+							    <h2>Agregar hash de Diploma</h2>
+								<p>Abrir un diploma para generar el hash y cargarlo a la Blockchain.</p>
+								Abrir diploma<p><input type="file" id="document_secret" value="Abrir diploma"></p>
+								<input type="text"  id="coddiplofunc" class="form-control" placeholder="Codigo diploma"><br>.
+								<button id="BotonAgregar">Agregar</button>
+						</div>
+						<div class="image">
+							<img src="images/banner.jpg" alt="" />
+						</div>
+					</section>
+
+				<!-- Cambiar contraseña -->
+				<!--
+					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
+						<div class="content">
+							<h2>Cambiar contraseña</h2>
+							<p>Introduzca su antigua contraseña y cambiela por una nueva</p>
+							<div class="margin-top-60">
+									<div class=" col-md-4 "></div>
+									<div class="input-group col-md-4 text-center">
+									<input id="antiguaContrasena" type="text" class="form-control" name="antiguaContrasena" placeholder="Antigua contraseña"><br>
+									<input id="nuevaContrasena" type="text" class="form-control" name="nuevaContrasena" placeholder="Nueva contraseña"><br>
+									<input id="verificarNuevaContrasena" type="text" class="form-control" name="verificarNuevaContrasena" placeholder="Repetir nueva contraseña"><br>
+									</div>
+									<div class=" col-md-4 "></div>
+									<br>
+							<button id="BotonCambiarContrasena">Cambiar contraseña</button>
+						  </div>
+						</div>
+						<div class="image">
+							<img src="images/spotlight01.jpg" alt="" />
+						</div>
+					</section>
+				     -->
+
+			</div>
+		</div>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="js/browser-md5-file.js"></script>
+
+			<script>
+
+			//var sesion,cedula funcionario, rol
+			var sesion=null;
+			var cedulafuncionario=null;
+			var rol=null;
+
+            var coddiploma="";
+			var sum_md5=null;
+			var codregx=/^[A-Za-z0-9]+$/;
+
+			var tiempotransaccion=null;
+				// proceso para sacar la suma de verificación de un documento
+			$('#document_secret').bind('change', function (e) {
+				console.log(e.target);
+				 var file = e.target.files[0];
+				 browserMD5File(file, function (err, md5) {
+					 sum_md5=md5;
+				   console.log(sum_md5); // 97027eb624f85892c69c4bcec8ab0f11
+				 });
+			   });
+
+			   $('#BotonAgregar').click(function(){
+				coddiploma=$('#coddiplofunc').val();
+				if (sum_md5!== null && coddiploma.length!=="" ){
+					if(coddiploma.length==11){
+					if(codregx.test(coddiploma)){
+						$('#BotonAgregar').attr("disabled", true);
+						$.post("/funcionario/adddiplo/"+cedulafuncionario+'/'+sesion+'/'+sum_md5+'/'+coddiploma , function(res){
+						 console.log(res.data1);
+						 alert("se esta creando el diploma en la blockchain, verifique en 3 minutos");
+						 $('#BotonAgregar').attr("disabled", false);
+						});
+					} else {
+						alert("el codigo del diploma debe contener solo letras y numeros");
+					}
+					}else {
+                       alert("el codigo del diploma debe ser de 11 caracteres!")
+					}
+				}
+				else {
+					alert("ingrese todos los datos");
+				}
+			   });
+
+
+
+    $('#BotonSalir').on("click",function(){
+	$.post("/direccion/slousa/"+cedulafuncionario+'/'+sesion, function(res){
+		document.getElementById("MinandoT").innerHTML = '<p style="color:white">.</p><p style="color:white">.</p><center><h3 style="color:grey">Generando Transacción salir</h3><div class="MinandoTransaccion"></div></center>';
+		var tx_salir=res.data7;
+		console.log(tx_salir);
+		tiempotransaccion= setInterval(()=> { //post de verificar minada transaccion
+          $.post("/direccion/sltrxsl/"+tx_salir, function(res){
+			estadox=res.data8;
+               console.log(estadox);
+               if(estadox==null){
+ 		//Animación cargando         
+		 document.getElementById("MinandoT").innerHTML = '<p style="color:white">.</p><p style="color:white">.</p><center><h3 style="color:grey">Saliendo de la Blockchain</h3><div class="MinandoTransaccion"></div></center>';
+ 
+                console.log("esperando a minar la transacción");
+               }
+               else {
+              console.log("La transacción ha sido minada!");
+				clearInterval(tiempotransaccion);
+				window.location.href="/ingresar";
+			}
+          }); 
+
+},3000);
+	})
+});
+
+			   window.onload = function() {
+					sesion=localStorage.getItem('sesion');
+					cedulafuncionario=localStorage.getItem('cedula');
+					rol=localStorage.getItem('rol');
+					console.log(sesion);
+					console.log(rol);
+					console.log(cedulafuncionario);
+					
+                };	
+			</script>
+	</body>
+</html>

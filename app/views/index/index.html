@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    
+    <!-- Meta Tag -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO -->
+    <meta name="description" content="Verificar Autenticidad de Diplomas mediante Blockchain ">
+    <meta name="author" content="grupo LIDER Universidad Distrital">
+    <meta name="url" content="http://comunidad.udistrital.edu.co/grupolider/">
+    <meta name="copyright" content="Universidad Distrital">
+    <meta name="robots" content="index,follow">
+    
+    
+    <title>Blockchain Reto 2</title>
+
+    <!-- Clase minando transacción -->
+    <link rel="stylesheet" type="text/css" href="css/cargandoBlockchain.css">   
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/x-icon" href="images/favicon/apple-touch-icon.png">
+    
+    <!-- All CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="css/plugin.css">
+    
+    <!-- Main CSS Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <!-- Google Web Fonts  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">
+    
+    
+    <!-- HTML5 shiv and Respond.js support IE8 or Older for HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+	   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+
+ </head>
+
+  <body>
+    
+    
+	
+	<!-- Preloader Start -->
+    <div id="preloader">
+	  <div class="loader"></div>
+    </div>
+    <!-- Preloader End -->
+
+    
+    
+    <!-- Home & Menu Section Start -->
+    <header id="home" class="home-section">
+        
+        <div class="header-top-area">
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-sm-3">
+                        <div class="logo">
+                            <a href="index-2.html">MINTIC + UDistrital</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-9">
+                        <div class="navigation-menu">
+                            <div class="navbar">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="active"><a class="smoth-scroll" href="#home">Inicio <div class="ripple-wrapper"></div></a>
+                                        </li>
+                                        <li><a class="smoth-scroll" href="javascript:void(0)" id="ingrefuncionario">Ingreso funcionarios</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="home-section-background" data-stellar-background-ratio="0.6">
+            <div class="display-table">
+                <div class="display-table-cell">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <div class="header-text">
+                                    <p>BlockChain Reto 2</p>
+                                    <h2><span class="typing"></span></h2>
+                                    
+                                    <div id="MinandoT" class="margin-top-60">       
+                                            <div class=" col-md-4 "></div>
+                                            <div class="input-group col-md-4 text-center">
+                                            <input id="codigoDiploma" type="text" class="form-control" name="codigoDiploma" placeholder="Codigo del diploma">
+                                            <br>.
+                                            <input type="file" id="diploma_secreto">
+                                            </div>
+                                            <div class=" col-md-4 "></div>
+                                            <br>
+                                        </form>
+                                    <button type="submit" class="button button-style button-style-icon fa fa-long-arrow-right smoth-scroll" id="veridiplo">Verificar Diploma</button>
+                                  </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+    <!-- Home & Menu Section End-->
+
+      <!-- statistics -->
+           <section class="statistics-section section-space-padding bg-cover text-center" data-stellar-background-ratio="0.3">
+                 <div class="container">     
+        
+                    <div class="row">
+                     <div class="statistics-center">  <!-- This code will work at max-width: 767px -->
+        
+                   <div class="col-md-3 col-sm-6">
+                    <div class="statistics">
+                      <div class="statistics-icon"><i class="fa fa-cube color-3"></i>
+                      </div>
+                      <div class="statistics-content">
+                        <h5><label id="tb2"></label></h5><span><h4>Bloques</h4></span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-3 col-sm-6">
+                    <div class="statistics">
+                      <div class="statistics-icon"><i class="fa fa-cog fa-spin color-5"></i>
+                      </div>
+                      <div class="statistics-content">
+                        <h5><label id="tb3"></label></h5><span><h4>Nodos</h4></span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-3 col-sm-6">
+                    <div class="statistics">
+                      <div class="statistics-icon"><i class="fa fa-exchange color-5"></i>
+                      </div>
+                      <div class="statistics-content">
+                        <h5><label id="tb4"></label></h5><span><h4>Nodo Conectado</h4></span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-3 col-sm-6">
+                    <div class="statistics">
+                      <div class="statistics-icon"><i class="fa fa-file color-4"></i>
+                      </div>
+                      <div class="statistics-content">
+                        <h4><label id="tb5"></label></h5><span><h4>Diplomas</h4></span>
+                      </div>
+                    </div>
+                    </div>
+        
+                   </div>
+                 </div>
+               </div>
+            </section>
+          <!-- statistics end -->
+
+    <!-- Footer Start -->
+    <footer class="footer-section">
+                <div class="container">
+                    <div class="row">
+                       
+              <div class="col-md-4 text-left">
+               <p><span><a href="#home" class="smoth-scroll">Inicio</a></span> | <span><a id="ingrefuncionario" href="javascript:void(0)" class="smoth-scroll">Ingreso Funcionarios</a></span></p>
+                  </div>
+                       
+                    <div class="col-md-4 text-center">
+                       <p><a href="http://comunidad.udistrital.edu.co/grupolider/" target="_blank" title="grupo LIDER">Grupo de investigación LIDER</a></p>
+                       </div>
+                      
+                     <div class="col-md-4 uipasta-credit text-right">
+                        <p>Soportado por <a href="https://rita.udistrital.edu.co" target="_blank" title="Red RITA">RITA</a></p>
+                        </div>
+                        
+                     </div>
+                </div>
+            </footer>
+            <!-- Footer End -->
+    
+    <!-- All Javascript Plugins  -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/plugin.js"></script>
+    
+    <!-- Main Javascript File  -->
+    <script type="text/javascript" src="js/scripts.js"></script>
+
+<!-- libreria para calcular el hash md5 de un documento  -->
+       <script src="js/browser-md5-file.js"></script>
+       
+    <!-- Consultas a la blockchain  -->  
+  <script>
+   //variables de comprobacion
+   var sum_md5=null;
+    $('#diploma_secreto').bind('change', function (e) {
+      console.log(e.target);
+       var file = e.target.files[0];
+       browserMD5File(file, function (err, md5) {
+           sum_md5=md5;
+         console.log(sum_md5); // 97027eb624f85892c69c4bcec8ab0f11
+       });
+     });
+
+
+         setInterval(()=> {
+            $.post("/MNtbjinq4zQCtL3EGUvj", function(res){
+              $("#tb3").text(res.data2);
+              $("#tb2").text(res.data1);
+              $("#tb4").text(res.data3);
+              $("#tb5").text(res.data4);
+            });
+         //   var tb1 = $("#tb1").val();      
+          //  $.get("/MNtbjinq4zQCtL3EGUvj", function(res){
+             
+          //   $("#tb2").text("hola");
+          //  });
+          }, 5000);
+
+          $('#ingrefuncionario').on("click",function(){
+
+           $.post("/MNtbjinq4zQCtL3EGUva", function(res){
+              var bolean=res.data5;
+            window.location.href="/ingresar";
+          }); })
+
+          // aqui comienza el proceso de verificacion de diplomas 
+ //Animación cargando         
+
+           $('#veridiplo').on("click",function(){
+               var codidiplo= $('#codigoDiploma').val();
+               console.log(codidiplo,sum_md5);
+               if (codidiplo!=="" && sum_md5!== null ){
+                document.getElementById("MinandoT").innerHTML = '<center><h3 style="color:white">Validando en la Blockchain</h3><div class="MinandoTransaccion"></div></center>';
+                $.post("/MNtbjinq4zQCtL3EGUdi/"+codidiplo+'/'+sum_md5, function(res){
+                   alert(res.data6);
+                   location.reload();
+          }); 
+
+               }
+               else {
+                alert("por favor ingrese los parametros!");
+               }
+            });
+            //alert("boton verificardiploma");
+          
+      </script>
+  
+  </body>
+ </html>
