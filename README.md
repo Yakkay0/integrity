@@ -1,4 +1,4 @@
-# integridad de un sistema de integridad de diplomas de grado con blockchain
+# Integridad de un sistema de integridad de diplomas de grado con blockchain
 
 ## 1. Requisitos Previos:
 
@@ -7,7 +7,8 @@
 **nodo1** y **nodo2**.
 * Desplegar el contrato iteligente *reto2_rama2.sol* en la red blockchain.
 
-
-
-
-
+## 2. Instalar los paquetes que usa la aplicación 
+           cd app && npm install
+           
+## 3. Desplegar la aplicación
+            npm start
