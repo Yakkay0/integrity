@@ -12,3 +12,7 @@
            
 ## 3. Desplegar la aplicación
             npm start
+            
+## 4. Se puede comprobar que la aplicacion se conecta con la blockchain de forma exitosa en el index:
+
+
